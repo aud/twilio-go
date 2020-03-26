@@ -109,7 +109,8 @@ type Client struct {
 	AvailableNumbers  *AvailableNumberService
 
 	// NewServerlessClient initializes these services
-	Services *ServicesService
+	Services     *ServicesService
+	Environments *EnvironmentsService
 
 	// NewMonitorClient initializes these services
 	Alerts *AlertService
@@ -255,6 +256,7 @@ func NewServerlessClient(accountSid string, authToken string, httpClient *http.C
 	c := newNewClient(accountSid, authToken, ServerlessBaseUrl, httpClient)
 	c.APIVersion = ServerlessVersion
 	c.Services = &ServicesService{client: c}
+	c.Environments = &EnvironmentsService{client}
 
 	return c
 }
