@@ -106,7 +106,9 @@ type Client struct {
 	Recordings        *RecordingService
 	Transcriptions    *TranscriptionService
 	AvailableNumbers  *AvailableNumberService
-	Functions         *FunctionService
+
+	// NewServerlessClient initializes these services
+	Functions *FunctionService
 
 	// NewMonitorClient initializes these services
 	Alerts *AlertService
