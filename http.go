@@ -67,6 +67,9 @@ var TaskRouterBaseUrl = "https://taskrouter.twilio.com"
 
 const TaskRouterVersion = "v1"
 
+const ServerlessBaseUrl = "https://serverless.twilio.com"
+const ServerlessVersion = "v1"
+
 type Client struct {
 	*rest.Client
 	Monitor    *Client
@@ -103,6 +106,7 @@ type Client struct {
 	Recordings        *RecordingService
 	Transcriptions    *TranscriptionService
 	AvailableNumbers  *AvailableNumberService
+	Functions         *FunctionService
 
 	// NewMonitorClient initializes these services
 	Alerts *AlertService
@@ -239,6 +243,19 @@ func NewMonitorClient(accountSid string, authToken string, httpClient *http.Clie
 	return c
 }
 
+// New returns a Client for use with the Twilio Serverless API.
+func NewServerlessClient(accountSid string, authToken string, httpClient *http.Client) *Client {
+	if httpClient == nil {
+		httpClient = &http.Client{Timeout: defaultTimeout}
+	}
+
+	c := newNewClient(accountSid, authToken, ServerlessBaseUrl, httpClient)
+	c.APIVersion = ServerlessVersion
+	c.Services = &ServicesService{client: c}
+
+	return c
+}
+
 // NewTaskRouterClient returns a Client for use with the Twilio TaskRouter API.
 func NewTaskRouterClient(accountSid string, authToken string, httpClient *http.Client) *Client {
 	if httpClient == nil {
@@ -345,6 +362,7 @@ func NewClient(accountSid string, authToken string, httpClient *http.Client) *Cl
 	c.Verify = NewVerifyClient(accountSid, authToken, httpClient)
 	c.Video = NewVideoClient(accountSid, authToken, httpClient)
 	c.TaskRouter = NewTaskRouterClient(accountSid, authToken, httpClient)
+	c.Serverless = NewServerlessClient(accountSid, authToken, httpClient)
 
 	c.Accounts = &AccountService{client: c}
 	c.Applications = &ApplicationService{client: c}
