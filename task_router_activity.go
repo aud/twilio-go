@@ -34,7 +34,7 @@ type ActivityPage struct {
 // more.
 func (r *ActivityService) Get(ctx context.Context, sid string) (*Activity, error) {
 	activity := new(Activity)
-	err := r.client.GetResource(ctx, "Workspaces/"+r.workspaceSid+"/"+activityPathPart, sid, activity)
+	err := r.client.GetResource(ctx, "testWorkspaces/"+r.workspaceSid+"/"+activityPathPart, sid, activity)
 	return activity, err
 }
 
