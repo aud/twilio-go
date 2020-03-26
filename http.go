@@ -108,8 +108,8 @@ type Client struct {
 	Transcriptions    *TranscriptionService
 	AvailableNumbers  *AvailableNumberService
 
-	// 	// NewServerlessClient initializes these services
-	// 	Functions *FunctionService
+	// NewServerlessClient initializes these services
+	Services *ServicesService
 
 	// NewMonitorClient initializes these services
 	Alerts *AlertService
