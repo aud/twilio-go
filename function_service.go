@@ -18,6 +18,10 @@ type ServicesService struct {
 	client *Client
 }
 
+type FunctionService struct {
+	Services *ServicesService
+}
+
 type Service struct {
 	Sid                string     `json:"sid"`
 	AccountSid         string     `json:"account_sid"`
