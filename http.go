@@ -364,7 +364,7 @@ func NewClient(accountSid string, authToken string, httpClient *http.Client) *Cl
 	c.Verify = NewVerifyClient(accountSid, authToken, httpClient)
 	c.Video = NewVideoClient(accountSid, authToken, httpClient)
 	c.TaskRouter = NewTaskRouterClient(accountSid, authToken, httpClient)
-	c.Serverless = NewServerlessClient(accountSid, authToken, httpClient)
+	c.Functions = NewServerlessClient(accountSid, authToken, httpClient)
 
 	c.Accounts = &AccountService{client: c}
 	c.Applications = &ApplicationService{client: c}

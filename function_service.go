@@ -37,7 +37,7 @@ type Service struct {
 func (s *ServicesService) Create(ctx context.Context, data url.Values) (*Service, error) {
 	service := new(Service)
 
-	err := s.client.UpdateResource(ctx, ServicePathPart, data)
+	err := s.client.CreateResource(ctx, ServicePathPart, data)
 
 	return service, err
 }
