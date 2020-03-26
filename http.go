@@ -81,6 +81,7 @@ type Client struct {
 	Verify     *Client
 	Video      *Client
 	TaskRouter *Client
+	Functions  *Client
 
 	// FullPath takes a path part (e.g. "Messages") and
 	// returns the full API path, including the version (e.g.
@@ -107,8 +108,8 @@ type Client struct {
 	Transcriptions    *TranscriptionService
 	AvailableNumbers  *AvailableNumberService
 
-	// NewServerlessClient initializes these services
-	Functions *FunctionService
+	// 	// NewServerlessClient initializes these services
+	// 	Functions *FunctionService
 
 	// NewMonitorClient initializes these services
 	Alerts *AlertService
