@@ -50,7 +50,7 @@ func (s *ServicesService) Create(ctx context.Context, data url.Values) (*Service
 func (s *EnvironmentsService) Create(ctx context.Context, serviceSid string, data url.Values) (*Environment, error) {
 	environment := new(Environment)
 
-	err := s.client.CreateResource(ctx, ServicePathPart+"/"+serviceSid+EnvironmentPathPart, data, environment)
+	err := s.client.CreateResource(ctx, ServicePathPart+"/"+serviceSid+"/"+EnvironmentPathPart, data, environment)
 
 	return environment, err
 }
