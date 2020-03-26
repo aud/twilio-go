@@ -254,9 +254,7 @@ func NewServerlessClient(accountSid string, authToken string, httpClient *http.C
 
 	c := newNewClient(accountSid, authToken, ServerlessBaseUrl, httpClient)
 	c.APIVersion = ServerlessVersion
-	c.Functions = &FunctionService{
-		Services: &ServicesService{client: c},
-	}
+	c.Services = &ServicesService{client: c}
 
 	return c
 }
